@@ -59,9 +59,17 @@ fi
 ################################
 
 read -r -p "Are you using a Camera Module? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    sudo sh -c "echo 'bcm2835-v4l2' >> /etc/modules"
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+    if ! grep -q bcm2835-v4l2 /etc/modules; then
+        echo "Adding Module"
+        sudo sh -c "echo 'bcm2835-v4l2' >> /etc/modules"
+    else
+        echo "Module already present"
+    fi
+else
+    if grep -q bcm2835-v4l2 /etc/modules; then
+        echo "You should remove bcm2835-v4l2 from /etc/modules"
+    fi
 fi
 
 #######################

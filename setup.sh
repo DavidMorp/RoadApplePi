@@ -54,6 +54,16 @@ else
 	echo "FFMpeg already found at $ffmpegLocation! Using installed version."
 fi
 
+################################
+# Using CameraPi? By DavidMorp #
+################################
+
+read -r -p "Are you using a Camera Module? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    sudo sh -c "echo 'bcm2835-v4l2' >> /etc/modules"
+fi
+
 #######################
 # Install RoadApplePi #
 #######################

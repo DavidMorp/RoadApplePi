@@ -125,8 +125,9 @@ int main()
 		}
 
 		//Set UVC options for my webcam (MOST LIKELY WEBCAM SPECIFIC)
-		system("uvcdynctrl -s 'Exposure, Auto' -- 3");
-		system("uvcdynctrl -s 'Exposure, Auto Priority' -- 1");
+		//Hence removed for the Pi Camera
+		//system("uvcdynctrl -s 'Exposure, Auto' -- 3");
+		//system("uvcdynctrl -s 'Exposure, Auto Priority' -- 1");
 
 		//When killed, kill ffmpeg
 		sigfillset(&recIntAction.sa_mask);
